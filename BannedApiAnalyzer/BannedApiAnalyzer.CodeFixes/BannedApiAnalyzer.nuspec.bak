@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<package>
+  <metadata minClientVersion="2.7">
+    <id>$id$</id>
+    <version>0.0.0</version>
+    <title>$id$</title>
+    <authors>Sam Harwell et. al.</authors>
+    <owners>Sam Harwell</owners>
+    <licenseUrl>https://raw.githubusercontent.com/DotNetAnalyzers/BannedApiAnalyzer/$GitCommitIdShort$/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/DotNetAnalyzers/BannedApiAnalyzer</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>An implementation of .NET banned API rules using Roslyn analyzers and code fixes</description>
+    <releaseNotes>https://github.com/DotNetAnalyzers/BannedApiAnalyzer/releases/$tag$</releaseNotes>
+    <copyright>Copyright 2018 Tunnel Vision Laboratories, LLC</copyright>
+    <tags>Banned API DotNetAnalyzers Roslyn Diagnostic Analyzer</tags>
+    <developmentDependency>true</developmentDependency>
+  </metadata>
+  <files>
+
+    <!-- Additional Files -->
+    <file src="..\..\LICENSE" />
+    <file src="..\..\THIRD-PARTY-NOTICES.txt" />
+
+    <!-- C# binaries and symbols -->
+    <file src="bin\$Configuration$\netstandard2.0\BannedApiAnalyzer.dll" target="analyzers\dotnet\cs" />
+    <file src="bin\$Configuration$\netstandard2.0\**\BannedApiAnalyzer.resources.dll" target="analyzers\dotnet\cs" />
+    <file src="bin\$Configuration$\netstandard2.0\BannedApiAnalyzer.pdb" target="analyzers\dotnet\cs" />
+    <file src="bin\$Configuration$\netstandard2.0\BannedApiAnalyzer.CSharp.dll" target="analyzers\dotnet\cs" />
+    <file src="bin\$Configuration$\netstandard2.0\**\BannedApiAnalyzer.CSharp.resources.dll" target="analyzers\dotnet\cs" />
+    <file src="bin\$Configuration$\netstandard2.0\BannedApiAnalyzer.CSharp.pdb" target="analyzers\dotnet\cs" />
+    <file src="bin\$Configuration$\netstandard2.0\BannedApiAnalyzer.CodeFixes.dll" target="analyzers\dotnet\cs" />
+    <file src="bin\$Configuration$\netstandard2.0\**\BannedApiAnalyzer.CodeFixes.resources.dll" target="analyzers\dotnet\cs" />
+    <file src="bin\$Configuration$\netstandard2.0\BannedApiAnalyzer.CodeFixes.pdb" target="analyzers\dotnet\cs" />
+
+    <!-- Visual Basic binaries and symbols -->
+    <file src="bin\$Configuration$\netstandard2.0\BannedApiAnalyzer.dll" target="analyzers\dotnet\vb" />
+    <file src="bin\$Configuration$\netstandard2.0\**\BannedApiAnalyzer.resources.dll" target="analyzers\dotnet\vb" />
+    <file src="bin\$Configuration$\netstandard2.0\BannedApiAnalyzer.pdb" target="analyzers\dotnet\vb" />
+    <file src="bin\$Configuration$\netstandard2.0\BannedApiAnalyzer.VisualBasic.dll" target="analyzers\dotnet\vb" />
+    <file src="bin\$Configuration$\netstandard2.0\**\BannedApiAnalyzer.VisualBasic.resources.dll" target="analyzers\dotnet\vb" />
+    <file src="bin\$Configuration$\netstandard2.0\BannedApiAnalyzer.VisualBasic.pdb" target="analyzers\dotnet\vb" />
+    <file src="bin\$Configuration$\netstandard2.0\BannedApiAnalyzer.CodeFixes.dll" target="analyzers\dotnet\vb" />
+    <file src="bin\$Configuration$\netstandard2.0\**\BannedApiAnalyzer.CodeFixes.resources.dll" target="analyzers\dotnet\vb" />
+    <file src="bin\$Configuration$\netstandard2.0\BannedApiAnalyzer.CodeFixes.pdb" target="analyzers\dotnet\vb" />
+
+    <!-- Dependencies -->
+
+    <!-- Scripts -->
+    <file src="tools\install.ps1" target="tools\" />
+    <file src="tools\uninstall.ps1" target="tools\" />
+
+    <!-- Source code -->
+    <file src="..\BannedApiAnalyzer\**\*.cs" exclude="..\BannedApiAnalyzer\obj\**\*.cs" target="src"/>
+    <file src="..\BannedApiAnalyzer.CSharp\**\*.cs" exclude="..\BannedApiAnalyzer.CSharp\obj\**\*.cs" target="src"/>
+    <file src="..\BannedApiAnalyzer.VisualBasic\**\*.cs" exclude="..\BannedApiAnalyzer.VisualBasic\obj\**\*.cs" target="src"/>
+    <file src="**\*.cs" exclude="obj\**\*.cs;Properties\AssemblyInfo.cs" target="src"/>
+
+  </files>
+</package>

@@ -5,10 +5,10 @@
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <RootNamespace>BannedApiAnalyzer</RootNamespace>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <!-- <GeneratePackageOnBuild>true</GeneratePackageOnBuild> -->
     <IncludeSymbols>true</IncludeSymbols>
-    <NuspecFile Condition="'$(MetadataPackage)' != 'true'">BannedApiAnalyzer.nuspec</NuspecFile>
-    <NuspecFile Condition="'$(MetadataPackage)' == 'true'">BannedApiAnalyzer.Metadata.nuspec</NuspecFile>
+    <!-- <NuspecFile Condition="'$(MetadataPackage)' != 'true'">BannedApiAnalyzer.nuspec</NuspecFile> -->
+    <!-- <NuspecFile Condition="'$(MetadataPackage)' == 'true'">BannedApiAnalyzer.Metadata.nuspec</NuspecFile> -->
   </PropertyGroup>
 
   <PropertyGroup>
@@ -36,37 +36,37 @@
     <ProjectReference Include="..\BannedApiAnalyzer\BannedApiAnalyzer.csproj" />
   </ItemGroup>
 
-  <Target Name="SetNuspecProperties" AfterTargets="GetBuildVersion">
-    <PropertyGroup>
-      <BaseNuspecId>DotNetAnalyzers.BannedApiAnalyzer</BaseNuspecId>
-      <ImplementationNuspecId>$(BaseNuspecId)</ImplementationNuspecId>
-      <MetadataNuspecId>$(BaseNuspecId)</MetadataNuspecId>
+  <!-- <Target Name="SetNuspecProperties" AfterTargets="GetBuildVersion"> -->
+  <!--   <PropertyGroup> -->
+  <!--     <BaseNuspecId>DotNetAnalyzers.BannedApiAnalyzer</BaseNuspecId> -->
+  <!--     <ImplementationNuspecId>$(BaseNuspecId)</ImplementationNuspecId> -->
+  <!--     <MetadataNuspecId>$(BaseNuspecId)</MetadataNuspecId> -->
 
-      <ImplementationNuspecId Condition="'$(PrereleaseVersion)' != ''">$(BaseNuspecId).Unstable</ImplementationNuspecId>
-      <MetadataNuspecId Condition="'$(PrereleaseVersion)' == ''">$(BaseNuspecId).Unstable</MetadataNuspecId>
+  <!--     <ImplementationNuspecId Condition="'$(PrereleaseVersion)' != ''">$(BaseNuspecId).Unstable</ImplementationNuspecId> -->
+  <!--     <MetadataNuspecId Condition="'$(PrereleaseVersion)' == ''">$(BaseNuspecId).Unstable</MetadataNuspecId> -->
 
-      <NuspecId Condition="'$(MetadataPackage)' != 'true'">$(ImplementationNuspecId)</NuspecId>
-      <NuspecId Condition="'$(MetadataPackage)' == 'true'">$(MetadataNuspecId)</NuspecId>
+  <!--     <NuspecId Condition="'$(MetadataPackage)' != 'true'">$(ImplementationNuspecId)</NuspecId> -->
+  <!--     <NuspecId Condition="'$(MetadataPackage)' == 'true'">$(MetadataNuspecId)</NuspecId> -->
 
-      <NuspecUnstableVersion>$(AssemblyVersion)</NuspecUnstableVersion>
-      <NuspecUnstableVersion Condition="'$(PublicRelease)' != 'true'">$(NuspecUnstableVersion)-g$(GitCommitIdShort)</NuspecUnstableVersion>
-      <NuspecStableVersion>$(PackageVersion)</NuspecStableVersion>
+  <!--     <NuspecUnstableVersion>$(AssemblyVersion)</NuspecUnstableVersion> -->
+  <!--     <NuspecUnstableVersion Condition="'$(PublicRelease)' != 'true'">$(NuspecUnstableVersion)-g$(GitCommitIdShort)</NuspecUnstableVersion> -->
+  <!--     <NuspecStableVersion>$(PackageVersion)</NuspecStableVersion> -->
 
-      <UnstablePackage Condition="('$(PrereleaseVersion)' != '' AND '$(MetadataPackage)' != 'true') OR ('$(PrereleaseVersion)' == '' AND '$(MetadataPackage)' == 'true')">true</UnstablePackage>
+  <!--     <UnstablePackage Condition="('$(PrereleaseVersion)' != '' AND '$(MetadataPackage)' != 'true') OR ('$(PrereleaseVersion)' == '' AND '$(MetadataPackage)' == 'true')">true</UnstablePackage> -->
 
-      <NuspecVersion Condition="'$(UnstablePackage)' != 'true'">$(NuspecStableVersion)</NuspecVersion>
-      <NuspecVersion Condition="'$(UnstablePackage)' == 'true'">$(NuspecUnstableVersion)</NuspecVersion>
+  <!--     <NuspecVersion Condition="'$(UnstablePackage)' != 'true'">$(NuspecStableVersion)</NuspecVersion> -->
+  <!--     <NuspecVersion Condition="'$(UnstablePackage)' == 'true'">$(NuspecUnstableVersion)</NuspecVersion> -->
 
-      <ImplementationNuspecVersion Condition="'$(PrereleaseVersion)' != ''">$(NuspecUnstableVersion)</ImplementationNuspecVersion>
-      <ImplementationNuspecVersion Condition="'$(PrereleaseVersion)' == ''">$(NuspecStableVersion)</ImplementationNuspecVersion>
+  <!--     <ImplementationNuspecVersion Condition="'$(PrereleaseVersion)' != ''">$(NuspecUnstableVersion)</ImplementationNuspecVersion> -->
+  <!--     <ImplementationNuspecVersion Condition="'$(PrereleaseVersion)' == ''">$(NuspecStableVersion)</ImplementationNuspecVersion> -->
 
-      <NuspecProperties>id=$(NuspecId);configuration=$(Configuration);GitCommitIdShort=$(GitCommitIdShort);version=$(NuspecVersion);tag=$(NuspecStableVersion);implId=$(ImplementationNuspecId);implVersion=$(ImplementationNuspecVersion)</NuspecProperties>
-    </PropertyGroup>
-  </Target>
+  <!--     <NuspecProperties>id=$(NuspecId);configuration=$(Configuration);GitCommitIdShort=$(GitCommitIdShort);version=$(NuspecVersion);tag=$(NuspecStableVersion);implId=$(ImplementationNuspecId);implVersion=$(ImplementationNuspecVersion)</NuspecProperties> -->
+  <!--   </PropertyGroup> -->
+  <!-- </Target> -->
 
-  <Target Name="PackMetadata" AfterTargets="Pack" Condition="'$(MetadataPackage)' != 'true'">
-    <MSBuild Projects="$(MSBuildProjectFullPath)"
-             Targets="Pack"
-             Properties="MetadataPackage=true;IncludeSymbols=false" />
-  </Target>
+  <!-- <Target Name="PackMetadata" AfterTargets="Pack" Condition="'$(MetadataPackage)' != 'true'"> -->
+  <!--   <MSBuild Projects="$(MSBuildProjectFullPath)" -->
+  <!--            Targets="Pack" -->
+  <!--            Properties="MetadataPackage=true;IncludeSymbols=false" /> -->
+  <!-- </Target> -->
 </Project>
