@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BannedApiAnalyzer.Test", "B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BannedApiAnalyzer.Vsix", "BannedApiAnalyzer\BannedApiAnalyzer.Vsix\BannedApiAnalyzer.Vsix.csproj", "{0B47A6D4-E492-42A4-9188-C42A0FE9A682}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BannedApiAnalyzer.Status.Generator", "BannedApiAnalyzer\BannedApiAnalyzer.Status.Generator\BannedApiAnalyzer.Status.Generator.csproj", "{C6D178A6-8FB6-4186-A463-330FCDA46EFA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BannedApiAnalyzer.CSharp", "BannedApiAnalyzer\BannedApiAnalyzer.CSharp\BannedApiAnalyzer.CSharp.csproj", "{8234077B-8C59-4B72-8F31-06DE192F2F7C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BannedApiAnalyzer.VisualBasic", "BannedApiAnalyzer\BannedApiAnalyzer.VisualBasic\BannedApiAnalyzer.VisualBasic.csproj", "{220DB30E-65BD-46C0-A6E7-81877E1C6BBA}"
@@ -39,10 +37,6 @@ Global
 		{0B47A6D4-E492-42A4-9188-C42A0FE9A682}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B47A6D4-E492-42A4-9188-C42A0FE9A682}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B47A6D4-E492-42A4-9188-C42A0FE9A682}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C6D178A6-8FB6-4186-A463-330FCDA46EFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C6D178A6-8FB6-4186-A463-330FCDA46EFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C6D178A6-8FB6-4186-A463-330FCDA46EFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C6D178A6-8FB6-4186-A463-330FCDA46EFA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8234077B-8C59-4B72-8F31-06DE192F2F7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8234077B-8C59-4B72-8F31-06DE192F2F7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8234077B-8C59-4B72-8F31-06DE192F2F7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
