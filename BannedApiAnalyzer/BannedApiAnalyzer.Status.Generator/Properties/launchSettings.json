@@ -2,7 +2,7 @@
   "profiles": {
     "BannedApiAnalyzer.Status.Generator": {
       "commandName": "Project",
-      "commandLineArgs": "..\\..\\..\\..\\..\\BannedApiAnalyzer.sln",
+      "commandLineArgs": "../../../../../BannedApiAnalyzer.sln",
       "environmentVariables": {
         "Configuration": "$(Configuration)"
       }
