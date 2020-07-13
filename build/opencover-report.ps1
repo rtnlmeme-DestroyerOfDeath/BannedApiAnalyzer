@@ -38,7 +38,7 @@ $report_generator = "$packages_folder\ReportGenerator.$reportgenerator_version\t
 $pdb2pdb = "$packages_folder\Microsoft.DiaSymReader.Pdb2Pdb.$pdb2pdb_version\tools\Pdb2Pdb.exe"
 $report_folder = '.\OpenCover.Reports'
 $symbols_folder = '.\OpenCover.Symbols'
-$target_dll_csharp7 = "..\BannedApiAnalyzer\BannedApiAnalyzer.Test\bin\$Configuration\net46\BannedApiAnalyzer.Test.dll"
+$target_dll_csharp7 = "..\BannedApiAnalyzer\BannedApiAnalyzer.Test\bin\$Configuration\net461\BannedApiAnalyzer.Test.dll"
 
 If (Test-Path $symbols_folder) {
 	Remove-Item -Recurse -Force $symbols_folder

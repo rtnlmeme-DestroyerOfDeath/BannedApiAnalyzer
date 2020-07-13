@@ -3,7 +3,7 @@
   <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.props" />
 
   <PropertyGroup>
-    <TargetFramework>net46</TargetFramework>
+    <TargetFramework>net461</TargetFramework>
     <RootNamespace>BannedApiAnalyzer</RootNamespace>
     <AssemblyName>BannedApiAnalyzer.Vsix</AssemblyName>
   </PropertyGroup>
@@ -44,7 +44,7 @@
 
   <ItemGroup>
     <!-- https://github.com/dotnet/sdk/issues/433 -->
-    <ProjectReference Update="@(ProjectReference)" AdditionalProperties="TargetFramework=net46" />
+    <ProjectReference Update="@(ProjectReference)" AdditionalProperties="TargetFramework=net461" />
 
     <!-- https://github.com/Microsoft/extendvs/issues/57 -->
     <ProjectReference Update="@(ProjectReference)" Name="%(Filename)" />
