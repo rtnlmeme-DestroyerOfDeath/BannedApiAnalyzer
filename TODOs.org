@@ -1,0 +1,39 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* add support for different warning levels
+** search in the code how we read the banned symbols
+** either we add another option to the symbol line
+** or we have multiple banned symbols files
+** something
