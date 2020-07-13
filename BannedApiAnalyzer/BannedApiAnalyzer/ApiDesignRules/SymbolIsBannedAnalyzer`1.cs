@@ -1,4 +1,4 @@
-﻿// Copyright (c) Tunnel Vision Laboratories, LLC. All Rights Reserved.
+﻿﻿// Copyright (c) Tunnel Vision Laboratories, LLC. All Rights Reserved.
 // Licensed under the MIT license. See LICENSE in the project root for license information.
 
 namespace BannedApiAnalyzer.ApiDesignRules
@@ -17,8 +17,9 @@ namespace BannedApiAnalyzer.ApiDesignRules
     internal abstract class SymbolIsBannedAnalyzer<TSyntaxKind> : DiagnosticAnalyzer
         where TSyntaxKind : struct
     {
+
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } =
-            ImmutableArray.Create(SymbolIsBannedAnalyzer.SymbolIsBannedRule, SymbolIsBannedAnalyzer.DuplicateBannedSymbolRule);
+            ImmutableArray.Create(SymbolIsBannedAnalyzer.SymbolIsBannedRule, SymbolIsBannedAnalyzer.InfoSymbolIsBannedRule, SymbolIsBannedAnalyzer.ErrorSymbolIsBannedRule, SymbolIsBannedAnalyzer.DuplicateBannedSymbolRule);
 
         protected abstract TSyntaxKind XmlCrefSyntaxKind { get; }
 
@@ -26,6 +27,7 @@ namespace BannedApiAnalyzer.ApiDesignRules
 
         public override void Initialize(AnalysisContext context)
         {
+
             context.EnableConcurrentExecution();
 
             // Analyzer needs to get callbacks for generated code, and might report diagnostics in generated code.
@@ -110,7 +112,8 @@ namespace BannedApiAnalyzer.ApiDesignRules
                     where sourceText != null
                     from line in sourceText.Lines
                     let text = line.ToString()
-                    where !string.IsNullOrWhiteSpace(text)
+                    // allow comment lines starting with #
+                    where !string.IsNullOrWhiteSpace(text) && !text.StartsWith("#")
                     select new BanFileEntry(text, line.Span, sourceText, additionalFile.Path);
 
                 var entries = query.ToList();
@@ -169,7 +172,7 @@ namespace BannedApiAnalyzer.ApiDesignRules
                         if (node != null)
                         {
                             reportDiagnostic(Diagnostic.Create(
-                                SymbolIsBannedAnalyzer.SymbolIsBannedRule,
+                                GetDescriptor(entry.m_WarnLevel),
                                 node.GetLocation(),
                                 attribute.AttributeClass.ToDisplayString(),
                                 string.IsNullOrWhiteSpace(entry.Message) ? string.Empty : ": " + entry.Message));
@@ -188,7 +191,7 @@ namespace BannedApiAnalyzer.ApiDesignRules
                     {
                         reportDiagnostic(
                             Diagnostic.Create(
-                                SymbolIsBannedAnalyzer.SymbolIsBannedRule,
+                                GetDescriptor(entry.m_WarnLevel),
                                 syntaxNode.GetLocation(),
                                 type.ToDisplayString(SymbolDisplayFormat),
                                 string.IsNullOrWhiteSpace(entry.Message) ? string.Empty : ": " + entry.Message));
@@ -208,7 +211,7 @@ namespace BannedApiAnalyzer.ApiDesignRules
                 {
                     reportDiagnostic(
                         Diagnostic.Create(
-                            SymbolIsBannedAnalyzer.SymbolIsBannedRule,
+                            GetDescriptor(entry.m_WarnLevel),
                             syntaxNode.GetLocation(),
                             symbol.ToDisplayString(SymbolDisplayFormat),
                             string.IsNullOrWhiteSpace(entry.Message) ? string.Empty : ": " + entry.Message));
@@ -234,23 +237,28 @@ namespace BannedApiAnalyzer.ApiDesignRules
         {
             public BanFileEntry(string text, TextSpan span, SourceText sourceText, string path)
             {
-                // Split the text on semicolon into declaration ID and message
-                var index = text.IndexOf(';');
 
-                if (index == -1)
-                {
-                    DeclarationId = text.Trim();
-                    Message = string.Empty;
+                // split at semicolons: id;message;warnLevel
+                var parts = text.Split(';');
+                foreach (var p in parts) {
+                    Console.WriteLine(p);
                 }
-                else if (index == text.Length - 1)
-                {
-                    DeclarationId = text.Substring(0, text.Length - 1).Trim();
-                    Message = string.Empty;
+
+                Message = string.Empty;
+                m_WarnLevel = WarnLevel.Warning;
+
+                if (parts.Length >= 1) {
+                    DeclarationId = parts[0];
                 }
-                else
-                {
-                    DeclarationId = text.Substring(0, index).Trim();
-                    Message = text.Substring(index + 1).Trim();
+
+                if (parts.Length >= 2) {
+                    Message = parts[1];
+                }
+
+                if (parts.Length == 3) {
+                    if (Enum.TryParse<WarnLevel>(parts[2], out var result)) {
+                        m_WarnLevel = result;
+                    }
                 }
 
                 Span = span;
@@ -268,7 +276,32 @@ namespace BannedApiAnalyzer.ApiDesignRules
 
             public string Message { get; }
 
+            public WarnLevel m_WarnLevel { get; }
+
             public Location Location => Location.Create(Path, Span, SourceText.Lines.GetLinePositionSpan(Span));
         }
+
+        private enum WarnLevel {
+            ///defaul
+            Warning,
+            Error,
+            Info
+        }
+
+
+        private DiagnosticDescriptor GetDescriptor(WarnLevel warnLevel) {
+            switch (warnLevel) {
+                case WarnLevel.Info:
+                    return SymbolIsBannedAnalyzer.InfoSymbolIsBannedRule;
+                case WarnLevel.Error:
+                    return SymbolIsBannedAnalyzer.ErrorSymbolIsBannedRule;
+                case WarnLevel.Warning:
+                default:
+                    return SymbolIsBannedAnalyzer.SymbolIsBannedRule;
+            }
+
+        }
+
+
     }
 }
