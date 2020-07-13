@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BannedApiAnalyzer</name>
+    </assembly>
+    <members>
+        <member name="T:BannedApiAnalyzer.AnalyzerCategory">
+            <summary>
+            Class defining the analyzer category constants.
+            </summary>
+        </member>
+        <member name="F:BannedApiAnalyzer.AnalyzerCategory.ApiDesign">
+            <summary>
+            Category definition for API design rules.
+            </summary>
+        </member>
+        <member name="P:BannedApiAnalyzer.AnalyzerConstants.DisabledNoTests">
+            <summary>
+            Gets a reference value which can be passed to
+            <see cref="M:Microsoft.CodeAnalysis.DiagnosticDescriptor.#ctor(System.String,System.String,System.String,System.String,Microsoft.CodeAnalysis.DiagnosticSeverity,System.Boolean,System.String,System.String,System.String[])"/>
+            to disable a diagnostic which is currently untested.
+            </summary>
+            <value>
+            A reference value which can be passed to
+            <see cref="M:Microsoft.CodeAnalysis.DiagnosticDescriptor.#ctor(System.String,System.String,System.String,System.String,Microsoft.CodeAnalysis.DiagnosticSeverity,System.Boolean,System.String,System.String,System.String[])"/>
+            to disable a diagnostic which is currently untested.
+            </value>
+        </member>
+        <member name="P:BannedApiAnalyzer.AnalyzerConstants.EnabledByDefault">
+            <summary>
+            Gets a reference value which can be passed to
+            <see cref="M:Microsoft.CodeAnalysis.DiagnosticDescriptor.#ctor(System.String,System.String,System.String,System.String,Microsoft.CodeAnalysis.DiagnosticSeverity,System.Boolean,System.String,System.String,System.String[])"/>
+            to indicate that the diagnostic should be enabled by default.
+            </summary>
+            <value>
+            A reference value which can be passed to
+            <see cref="M:Microsoft.CodeAnalysis.DiagnosticDescriptor.#ctor(System.String,System.String,System.String,System.String,Microsoft.CodeAnalysis.DiagnosticSeverity,System.Boolean,System.String,System.String,System.String[])"/>
+            to indicate that the diagnostic should be enabled by default.
+            </value>
+        </member>
+        <member name="P:BannedApiAnalyzer.AnalyzerConstants.DisabledByDefault">
+            <summary>
+            Gets a reference value which can be passed to
+            <see cref="M:Microsoft.CodeAnalysis.DiagnosticDescriptor.#ctor(System.String,System.String,System.String,System.String,Microsoft.CodeAnalysis.DiagnosticSeverity,System.Boolean,System.String,System.String,System.String[])"/>
+            to indicate that the diagnostic should be disabled by default.
+            </summary>
+            <value>
+            A reference value which can be passed to
+            <see cref="M:Microsoft.CodeAnalysis.DiagnosticDescriptor.#ctor(System.String,System.String,System.String,System.String,Microsoft.CodeAnalysis.DiagnosticSeverity,System.Boolean,System.String,System.String,System.String[])"/>
+            to indicate that the diagnostic should be disabled by default.
+            </value>
+        </member>
+        <member name="T:BannedApiAnalyzer.ApiDesignRules.ApiDesignResources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:BannedApiAnalyzer.ApiDesignRules.ApiDesignResources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:BannedApiAnalyzer.ApiDesignRules.ApiDesignResources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:BannedApiAnalyzer.ApiDesignRules.ApiDesignResources.DuplicateBannedSymbolDescription">
+            <summary>
+              Looks up a localized string similar to The list of banned symbols contains a duplicate..
+            </summary>
+        </member>
+        <member name="P:BannedApiAnalyzer.ApiDesignRules.ApiDesignResources.DuplicateBannedSymbolMessage">
+            <summary>
+              Looks up a localized string similar to The symbol &apos;{0}&apos; is listed multiple times in the list of banned APIs.
+            </summary>
+        </member>
+        <member name="P:BannedApiAnalyzer.ApiDesignRules.ApiDesignResources.DuplicateBannedSymbolTitle">
+            <summary>
+              Looks up a localized string similar to The list of banned symbols contains a duplicate.
+            </summary>
+        </member>
+        <member name="P:BannedApiAnalyzer.ApiDesignRules.ApiDesignResources.SymbolIsBannedDescription">
+            <summary>
+              Looks up a localized string similar to The symbol has been marked as banned in this project, and an alternate should be used instead..
+            </summary>
+        </member>
+        <member name="P:BannedApiAnalyzer.ApiDesignRules.ApiDesignResources.SymbolIsBannedMessage">
+            <summary>
+              Looks up a localized string similar to The symbol &apos;{0}&apos; is banned in this project{1}.
+            </summary>
+        </member>
+        <member name="P:BannedApiAnalyzer.ApiDesignRules.ApiDesignResources.SymbolIsBannedTitle">
+            <summary>
+              Looks up a localized string similar to Do not used banned APIs.
+            </summary>
+        </member>
+        <member name="T:BannedApiAnalyzer.Helpers.HelpersResources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:BannedApiAnalyzer.Helpers.HelpersResources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:BannedApiAnalyzer.Helpers.HelpersResources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:BannedApiAnalyzer.Helpers.HelpersResources.FixAllOccurrencesOfDiagnostic">
+            <summary>
+              Looks up a localized string similar to Fix all &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:BannedApiAnalyzer.Helpers.HelpersResources.FixAllOccurrencesOfDiagnosticInScope">
+            <summary>
+              Looks up a localized string similar to Fix all &apos;{0}&apos; in &apos;{1}&apos;.
+            </summary>
+        </member>
+        <member name="P:BannedApiAnalyzer.Helpers.HelpersResources.FixAllOccurrencesOfDiagnosticInSolution">
+            <summary>
+              Looks up a localized string similar to Fix all &apos;{0}&apos; in Solution.
+            </summary>
+        </member>
+        <member name="T:BannedApiAnalyzer.NoCodeFixAttribute">
+            <summary>
+            This attribute is applied to <see cref="T:Microsoft.CodeAnalysis.Diagnostics.DiagnosticAnalyzer"/>s for which no code fix is currently planned.
+            </summary>
+            <remarks>
+            <para>There are several reasons an analyzer does not have a code fix, including but not limited to the
+            following:</para>
+            <list type="bullet">
+            <item><description>Visual Studio provides a built-in code fix.</description></item>
+            <item><description>A code fix could not provide a useful solution.</description></item>
+            </list>
+            <para>The <see cref="P:BannedApiAnalyzer.NoCodeFixAttribute.Reason"/> should be provided.</para>
+            </remarks>
+        </member>
+        <member name="M:BannedApiAnalyzer.NoCodeFixAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BannedApiAnalyzer.NoCodeFixAttribute"/> class.
+            </summary>
+            <param name="reason">The reason why the <see cref="T:Microsoft.CodeAnalysis.Diagnostics.DiagnosticAnalyzer"/> does not have a code fix.</param>
+        </member>
+        <member name="P:BannedApiAnalyzer.NoCodeFixAttribute.Reason">
+            <summary>
+            Gets the reason why the <see cref="T:Microsoft.CodeAnalysis.Diagnostics.DiagnosticAnalyzer"/> does not have a code fix.
+            </summary>
+            <value>
+            The reason why the <see cref="T:Microsoft.CodeAnalysis.Diagnostics.DiagnosticAnalyzer"/> does not have a code fix.
+            </value>
+        </member>
+    </members>
+</doc>
