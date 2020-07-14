@@ -18,10 +18,8 @@ namespace BannedApiAnalyzer.ApiDesignRules
         where TSyntaxKind : struct
     {
 
-        static DiagnosticDescriptor bestDiagnostic = new DiagnosticDescriptor("LULBEST","BestTitle","BestMsg","BestCategory",DiagnosticSeverity.Warning,true,"BestDesciption");
-
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } =
-            ImmutableArray.Create(SymbolIsBannedAnalyzer.SymbolIsBannedRule, SymbolIsBannedAnalyzer.InfoSymbolIsBannedRule, SymbolIsBannedAnalyzer.ErrorSymbolIsBannedRule, SymbolIsBannedAnalyzer.DuplicateBannedSymbolRule, bestDiagnostic);
+            ImmutableArray.Create(SymbolIsBannedAnalyzer.SymbolIsBannedRule, SymbolIsBannedAnalyzer.InfoSymbolIsBannedRule, SymbolIsBannedAnalyzer.ErrorSymbolIsBannedRule, SymbolIsBannedAnalyzer.DuplicateBannedSymbolRule);
 
         protected abstract TSyntaxKind XmlCrefSyntaxKind { get; }
 
@@ -30,7 +28,6 @@ namespace BannedApiAnalyzer.ApiDesignRules
         public override void Initialize(AnalysisContext context)
         {
 
-            Log.Info("initialize, supported diagnostics: {SupportedDiagnostics.Count}");
             context.EnableConcurrentExecution();
 
             // Analyzer needs to get callbacks for generated code, and might report diagnostics in generated code.
