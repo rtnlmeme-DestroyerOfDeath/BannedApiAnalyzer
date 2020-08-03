@@ -240,9 +240,6 @@ namespace BannedApiAnalyzer.ApiDesignRules
 
                 // split at semicolons: id;message;warnLevel
                 var parts = text.Split(';');
-                foreach (var p in parts) {
-                    Console.WriteLine(p);
-                }
 
                 Message = string.Empty;
                 m_WarnLevel = WarnLevel.Warning;
