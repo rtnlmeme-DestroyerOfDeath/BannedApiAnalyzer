@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
 
 public static class Log {
     public static bool verbose;
-    public static string LogFile = Path.Combine(Path.GetTempPath(), "analyzer-log");
+    public static string LogFile = Path.Combine(Path.GetTempPath(), "out.analyzer-log");
     static readonly bool logToFile = File.Exists(LogFile);
     static readonly bool StatLogEnabled = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("CI"));
     public static void Verbose(object obj) {
